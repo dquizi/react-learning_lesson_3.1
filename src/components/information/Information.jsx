@@ -1,13 +1,17 @@
-// import { useState } from 'react'
 import styles from './information.module.css'
 
-const InformationLayout = () => {
-	return <div className={styles.information}></div>
+const InformationLayout = ({ isGameEnded, isDraw, currentPlayer }) => {
+	return (
+		<div className={styles.information}>
+			{!isDraw && !isGameEnded && `Ходит: ${currentPlayer}`}
+			{isDraw && 'НИЧЬЯ'}
+			{!isDraw && isGameEnded && `Победитель: ${currentPlayer}`}
+		</div>
+	)
 };
 
-export const Information = () => {
-	// const [count, setCount] = useState(0);
+export const Information = ({ isGameEnded, isDraw, currentPlayer }) => {
 
-	return <InformationLayout />;
+	return <InformationLayout isGameEnded={isGameEnded} isDraw={isDraw} currentPlayer={currentPlayer} />;
 };
 
